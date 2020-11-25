@@ -12,17 +12,24 @@ class m160622_085710_create_ImageManager_table extends Migration
      */
     public function up()
     {
-		//ImageManager: create table
+	$tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
+	//ImageManager: create table
         $this->createTable('{{%ImageManager}}', [
             'id' => $this->primaryKey(),
 			'fileName' => $this->string(128)->notNull(),
 			'fileHash' => $this->string(32)->notNull(),
 			'created' => $this->datetime()->notNull(),
 			'modified' => $this->datetime(),
-        ]);
-		
+        ],$tableOptions);
+	
+	 if ($this->db->driverName === 'mysql') {
 		//ImageManager: alter id column
 		$this->alterColumn('{{%ImageManager}}', 'id', 'INT(10) UNSIGNED NOT NULL AUTO_INCREMENT');
+	 }
 
     }
 
