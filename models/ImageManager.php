@@ -44,8 +44,8 @@ class ImageManager extends \yii\db\ActiveRecord {
                 // Module has blame able behavior
                 $aBehaviors[] = [
                     'class' => BlameableBehavior::className(),
-                    'createdByAttribute' => 'createdBy',
-                    'updatedByAttribute' => 'modifiedBy',
+                    'createdByAttribute' => 'created_by',
+                    'updatedByAttribute' => 'modified_by',
                 ];
             }
         }
@@ -57,7 +57,7 @@ class ImageManager extends \yii\db\ActiveRecord {
 	 * @inheritdoc
 	 */
 	public static function tableName() {
-		return '{{%ImageManager}}';
+		return '{{%image_manager}}';
 	}
 
     /**
@@ -103,8 +103,8 @@ class ImageManager extends \yii\db\ActiveRecord {
 			'fileHash' => Yii::t('imagemanager', 'File Hash'),
 			'created' => Yii::t('imagemanager', 'Created'),
 			'modified' => Yii::t('imagemanager', 'Modified'),
-			'createdBy' => Yii::t('imagemanager', 'Created by'),
-			'modifiedBy' => Yii::t('imagemanager', 'Modified by'),
+			'created_by' => Yii::t('imagemanager', 'Created by'),
+			'modified_by' => Yii::t('imagemanager', 'Modified by'),
 		];
 	}
 
