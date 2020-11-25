@@ -18,7 +18,7 @@ class m160622_085710_create_ImageManager_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 	//ImageManager: create table
-        $this->createTable('{{%ImageManager}}', [
+        $this->createTable('{{%image_manager}}', [
             'id' => $this->primaryKey(),
 			'fileName' => $this->string(128)->notNull(),
 			'fileHash' => $this->string(32)->notNull(),
@@ -28,7 +28,7 @@ class m160622_085710_create_ImageManager_table extends Migration
 	
 	 if ($this->db->driverName === 'mysql') {
 		//ImageManager: alter id column
-		$this->alterColumn('{{%ImageManager}}', 'id', 'INT(10) UNSIGNED NOT NULL AUTO_INCREMENT');
+		$this->alterColumn('{{%image_manager}}', 'id', 'INT(10) UNSIGNED NOT NULL AUTO_INCREMENT');
 	 }
 
     }
@@ -38,6 +38,6 @@ class m160622_085710_create_ImageManager_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('{{%ImageManager}}');
+        $this->dropTable('{{%image_manager}}');
     }
 }
